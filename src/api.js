@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({ baseURL: "https://api.coinpaprika.com/v1" });
 
-const getPrices = () => api.get("/tickers");
-const getExchanges = () => api.get("/exchanges");
-const getCoins = () => api.get("/coins");
-const getDetail = (id) => api.get(`/coins/${id}`);
+export const getPrices = () => api.get("/tickers");
+export const getExchanges = () => api.get("/exchanges");
+export const getCoins = () => api.get("/coins");
+export const getDetail = (id) => api.get(`/coins/${id}`);
