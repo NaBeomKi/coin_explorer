@@ -8,15 +8,18 @@ export default class extends React.Component {
     error: null,
     prices: [],
   };
-  async componentDidMount() {
+  setPrices = async () => {
     try {
       const { data } = await getPrices();
       this.setState({ prices: data });
     } catch {
-      this.setState({ error: "Sorry, Try again" });
+      this.setState({ error: "Sorry, Can't find Prices. Try again" });
     } finally {
       this.setState({ loading: false });
     }
+  };
+  componentDidMount() {
+    this.setPrices();
   }
   render() {
     return <PricesPresenter {...this.state} />;

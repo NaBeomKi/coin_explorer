@@ -1,1 +1,2 @@
-export default () => "Exchanges";
+import ExchangesContainer from "./ExchangesContainer";
+export default ExchangesContainer;
