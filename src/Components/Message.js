@@ -11,8 +11,8 @@ const Container = styled("section")`
 
 const Message = ({ message }) => <Container>{message}</Container>;
 
-export default Message;
-
 Message.propTypes = {
   message: PropTypes.string.isRequired,
 };
+
+export default Message;

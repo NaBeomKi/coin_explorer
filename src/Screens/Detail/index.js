@@ -1,1 +1,2 @@
-export default () => "Detail";
+import DetailContainer from "./DetailContainer";
+export default DetailContainer;

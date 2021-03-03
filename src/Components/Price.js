@@ -16,8 +16,6 @@ const Price = ({
   },
 }) => <Container>{`${name} / ${symbol} : $${price}`}</Container>;
 
-export default Price;
-
 Price.propTypes = {
   name: PropTypes.string.isRequired,
   symbol: PropTypes.string.isRequired,
@@ -27,3 +25,5 @@ Price.propTypes = {
     }).isRequired,
   }).isRequired,
 };
+
+export default Price;

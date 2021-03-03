@@ -28,4 +28,11 @@ const Coin = ({ id, name, symbol, rank }) => (
   </Container>
 );
 
+Coin.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
+  rank: PropTypes.number.isRequired,
+};
+
 export default Coin;

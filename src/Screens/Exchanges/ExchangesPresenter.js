@@ -23,8 +23,6 @@ const ExchangesPresenter = ({ loading, error, exchanges }) => (
   </Container>
 );
 
-export default ExchangesPresenter;
-
 ExchangesPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
@@ -39,3 +37,5 @@ ExchangesPresenter.propTypes = {
     }).isRequired
   ).isRequired,
 };
+
+export default ExchangesPresenter;

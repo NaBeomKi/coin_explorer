@@ -12,6 +12,6 @@ export default () => (
     <Route path="/" exact component={Prices} />
     <Route path="/exchanges" component={Exchanges} />
     <Route path="/coins" exact component={Coins} />
-    <Route path="/coins/:id" exact component={Detail} />
+    <Route path="/coins/:id" component={Detail} />
   </Router>
 );

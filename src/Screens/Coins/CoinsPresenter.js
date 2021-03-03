@@ -26,8 +26,6 @@ const CoinsPresenter = ({ loading, error, coins }) => (
   </Container>
 );
 
-export default CoinsPresenter;
-
 CoinsPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
@@ -40,3 +38,5 @@ CoinsPresenter.propTypes = {
     }).isRequired
   ).isRequired,
 };
+
+export default CoinsPresenter;

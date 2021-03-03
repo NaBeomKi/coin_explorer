@@ -23,8 +23,6 @@ const PricesPresenter = ({ loading, error, prices }) => (
   </Container>
 );
 
-export default PricesPresenter;
-
 PricesPresenter.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.string,
@@ -41,3 +39,5 @@ PricesPresenter.propTypes = {
     }).isRequired
   ).isRequired,
 };
+
+export default PricesPresenter;

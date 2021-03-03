@@ -8,7 +8,7 @@ const Container = styled("article")`
   }
 `;
 
-const Title = styled("h3")`
+const Title = styled("h2")`
   margin-bottom: 1.5em;
   font-size: 2rem;
   font-weight: bold;
@@ -51,8 +51,6 @@ const Exchange = ({ name, description, links }) => (
   </Container>
 );
 
-export default Exchange;
-
 Exchange.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -60,3 +58,5 @@ Exchange.propTypes = {
     website: PropTypes.arrayOf(PropTypes.string.isRequired),
   }),
 };
+
+export default Exchange;
