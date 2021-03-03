@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Helmet } from "react-helmet-async";
 import Loading from "Components/Loading";
 import Message from "Components/Message";
 import Price from "Components/Price";
@@ -11,16 +12,21 @@ const Container = styled("main")`
 `;
 
 const PricesPresenter = ({ loading, error, prices }) => (
-  <Container>
-    {loading ? (
-      <Loading />
-    ) : (
-      prices &&
-      prices.length > 0 &&
-      prices.map((price) => <Price key={price.id} {...price} />)
-    )}
-    {error && <Message message={error} />}
-  </Container>
+  <>
+    <Helmet>
+      <title>Prices | Coin Explorer</title>
+    </Helmet>
+    <Container>
+      {loading ? (
+        <Loading />
+      ) : (
+        prices &&
+        prices.length > 0 &&
+        prices.map((price) => <Price key={price.id} {...price} />)
+      )}
+      {error && <Message message={error} />}
+    </Container>
+  </>
 );
 
 PricesPresenter.propTypes = {

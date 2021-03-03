@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Helmet } from "react-helmet-async";
 import Loading from "Components/Loading";
 import Message from "Components/Message";
 import CoinMarkets from "Screens/CoinMarkets";
@@ -56,10 +57,18 @@ const DetailPresenter = withRouter(
   ({ location: { pathname }, loading, error, coinInfo }) => (
     <Container>
       {loading ? (
-        <Loading />
+        <>
+          <Helmet>
+            <title>Loading | Coin Explorer</title>
+          </Helmet>
+          <Loading />
+        </>
       ) : (
         coinInfo && (
           <>
+            <Helmet>
+              <title>{coinInfo.name} | Coin Explorer</title>
+            </Helmet>
             <Title>
               {coinInfo.name} / {coinInfo.symbol}
             </Title>

@@ -14,7 +14,6 @@ const CoinExchangesPresenter = ({ loading, error, exchanges }) =>
     <>
       {exchanges && exchanges.length > 0 && (
         <Container>
-          {console.log(exchanges)}
           {exchanges
             .filter((exchange) => exchange.fiats.length > 0)
             .map((exchange) => (

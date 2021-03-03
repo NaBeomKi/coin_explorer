@@ -6,7 +6,7 @@ export default class extends React.Component {
   state = {
     loading: true,
     error: null,
-    coinInfo: {},
+    coinInfo: null,
   };
   setCoinInfo = async () => {
     const {

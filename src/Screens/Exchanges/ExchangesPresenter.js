@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes, { string } from "prop-types";
 import styled from "styled-components";
+import { Helmet } from "react-helmet-async";
 import Loading from "Components/Loading";
 import Message from "Components/Message";
 import Exchange from "Components/Exchange";
@@ -11,16 +12,23 @@ const Container = styled("main")`
 `;
 
 const ExchangesPresenter = ({ loading, error, exchanges }) => (
-  <Container>
-    {loading ? (
-      <Loading />
-    ) : (
-      exchanges &&
-      exchanges.length > 0 &&
-      exchanges.map((exchange) => <Exchange key={exchange.id} {...exchange} />)
-    )}
-    {error && <Message message={error} />}
-  </Container>
+  <>
+    <Helmet>
+      <title>Exchanges | Coin Explorer</title>
+    </Helmet>
+    <Container>
+      {loading ? (
+        <Loading />
+      ) : (
+        exchanges &&
+        exchanges.length > 0 &&
+        exchanges.map((exchange) => (
+          <Exchange key={exchange.id} {...exchange} />
+        ))
+      )}
+      {error && <Message message={error} />}
+    </Container>
+  </>
 );
 
 ExchangesPresenter.propTypes = {

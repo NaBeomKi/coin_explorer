@@ -3,20 +3,23 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Container = styled("article")`
-  text-decoration: underline;
-  &:hover {
-    color: #9b59b6;
-  }
   &:not(:last-child) {
     margin-bottom: 1em;
   }
 `;
 
+const Link = styled("a")`
+  text-decoration: underline;
+  &:hover {
+    color: #9b59b6;
+  }
+`;
+
 const Market = ({ name, url }) => (
   <Container>
-    <a href={url || "#"} target="_blank">
+    <Link href={url || "#"} target="_blank">
       {name} ➡
-    </a>
+    </Link>
   </Container>
 );
 

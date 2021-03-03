@@ -25,12 +25,21 @@ const CoinExchange = ({ name, fiats }) => (
   <Container>
     <Title>{name}</Title>
     <TextBox>
-      Pay On{" "}
-      {fiats.map((fiat) => (
-        <Span>{fiat.symbol}</Span>
+      Pay on{" "}
+      {fiats.map((fiat, index) => (
+        <Span key={fiat.symbol + index}>{fiat.symbol}</Span>
       ))}
     </TextBox>
   </Container>
 );
+
+CoinExchange.propTypes = {
+  name: PropTypes.string.isRequired,
+  fiats: PropTypes.arrayOf(
+    PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+};
 
 export default CoinExchange;
