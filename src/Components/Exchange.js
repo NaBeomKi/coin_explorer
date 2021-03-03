@@ -25,6 +25,9 @@ const Links = styled("div")`
 
 const Link = styled("a")`
   text-decoration: underline;
+  &:hover {
+    color: #9b59b6;
+  }
   &:not(:last-child) {
     margin-bottom: 0.5em;
   }

@@ -24,6 +24,9 @@ const SLink = styled(Link)`
   font-weight: bold;
   font-size: 1.8rem;
   color: ${(props) => (props.selected ? "#2980b9" : "#2c3e50")};
+  &:hover {
+    color: #2980b9;
+  }
 `;
 
 export default withRouter(({ location: { pathname } }) => (
