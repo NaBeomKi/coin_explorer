@@ -1,14 +1,37 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getCoinMarkets } from "api";
 import Loading from "Components/Loading";
 import Message from "Components/Message";
 import Market from "Components/Market";
 
 const Container = styled("section")``;
 
-const CoinMarketsPresenter = ({ loading, error, markets }) =>
-  loading ? (
+export default function CoinMarkets({
+  match: {
+    params: { id },
+  },
+}) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [markets, setMarkets] = useState([]);
+
+  async function getCoinMarketsData() {
+    try {
+      const { data } = await getCoinMarkets(id);
+      setMarkets(data);
+    } catch {
+      setError("Sorry, Can't find Markets. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getCoinMarketsData();
+  }, []);
+
+  return loading ? (
     <Loading />
   ) : (
     <>
@@ -28,17 +51,4 @@ const CoinMarketsPresenter = ({ loading, error, markets }) =>
       {error && <Message message={error} />}
     </>
   );
-
-CoinMarketsPresenter.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  markets: PropTypes.arrayOf(
-    PropTypes.shape({
-      exchange_id: PropTypes.string.isRequired,
-      exchange_name: PropTypes.string.isRequired,
-      market_url: PropTypes.string,
-    })
-  ),
-};
-
-export default CoinMarketsPresenter;
+}

@@ -1,8 +1,8 @@
-import React from "react";
-import { Route, Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { Route, Link } from "react-router-dom";
 import styled from "styled-components";
 import { Helmet } from "react-helmet-async";
+import { getDetail } from "api";
 import Loading from "Components/Loading";
 import Message from "Components/Message";
 import CoinMarkets from "Screens/CoinMarkets";
@@ -53,8 +53,32 @@ const Button = styled(Link)`
   }
 `;
 
-const DetailPresenter = withRouter(
-  ({ location: { pathname }, loading, error, coinInfo }) => (
+export default function Detail({
+  location: { pathname },
+  match: {
+    params: { id },
+  },
+}) {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [coinInfo, setCoinInfo] = useState(null);
+
+  async function getDetailData() {
+    try {
+      const { data } = await getDetail(id);
+      setCoinInfo(data);
+    } catch {
+      setError("Sorry, Can't find Coin information");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getDetailData();
+  }, []);
+
+  return (
     <Container>
       {loading ? (
         <>
@@ -112,22 +136,5 @@ const DetailPresenter = withRouter(
       )}
       {error && <Message message={error} />}
     </Container>
-  )
-);
-
-DetailPresenter.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
-  coinInfo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    symbol: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    rank: PropTypes.number.isRequired,
-    open_source: PropTypes.bool.isRequired,
-    proof_type: PropTypes.string.isRequired,
-    org_structure: PropTypes.string.isRequired,
-  }),
-};
-
-export default DetailPresenter;
+  );
+}

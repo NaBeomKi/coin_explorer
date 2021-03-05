@@ -39,7 +39,7 @@ export default withRouter(({ location: { pathname } }) => (
       <SLink to="/exchanges" selected={pathname === "/exchanges"}>
         Exchanges
       </SLink>
-      <SLink to="/coins" selected={pathname === "/coins"}>
+      <SLink to="/coins" selected={pathname.includes("/coins")}>
         Coins
       </SLink>
     </Navi>
